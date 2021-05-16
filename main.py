@@ -11,7 +11,26 @@ ALPHA_PARAMS = {
     "function": "TIME_SERIES_DAILY",
     "symbol": STOCK,
 }
+NEWS_API_KEY = os.getenv("NEWS_API_KEY")
+NEWS_API_ENDPOINT = "https://newsapi.org/v2/everything"
+NEW_API_PARAMS = {
+    "apiKey": NEWS_API_KEY,
+    "language": "en",
+    "q": "tesla",
+    "from": "2021-05-16",
+    "to": "2021-05-16",
+}
 pretty = PrettyTable()
+
+stock_news = requests.get(NEWS_API_ENDPOINT, NEW_API_PARAMS)
+stock_news.raise_for_status()
+
+news_data = stock_news.json()["articles"]
+news_data = [{
+    "source": item["source"]["name"],
+    "datetime": item["publishedAt"],
+    "title": item["description"],
+} for item in news_data]
 
 alpha_stock = requests.get(ALPHA_API_ENDPOINT, ALPHA_PARAMS)
 alpha_stock.raise_for_status()
