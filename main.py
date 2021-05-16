@@ -69,3 +69,6 @@ for _ in range(0, len(alpha_data)):
                     alpha_data[_]["price delta"], str(alpha_data[_]["price percent delta"]) + "%"])
 
 print(pretty)
+
+# TODO: The news are currently not used for anything.
+#   Maybe the data could be pushed through email with news updates and maybe in csv format?
