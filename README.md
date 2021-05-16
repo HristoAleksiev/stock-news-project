@@ -2,4 +2,4 @@
 
 Playing with AlphaVangae for stock data on TSLA.
 
-Printting price differences between days in PrettyTables.
+Printing price differences between days in PrettyTables.
